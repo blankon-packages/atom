@@ -1,0 +1,73 @@
+#!/usr/bin/make -f
+
+DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+DEB_HOST_ARCH      ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+DEB_HOST_ARCH_CPU  ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
+DEB_HOST_ARCH_OS   ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	touch configure-stamp
+
+build: build-arch build-indep
+
+build-arch: build-stamp
+build-indep: build-stamp
+
+build-stamp: configure-stamp
+	touch $@
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	install -Dm 644 $(CURDIR)/icons/16x16/atom.png $(CURDIR)/debian/atom/usr/share/icons/hicolor/16x16/apps/atom.png
+	install -Dm 644 $(CURDIR)/icons/32x32/atom.png $(CURDIR)/debian/atom/usr/share/icons/hicolor/32x32/apps/atom.png
+	install -Dm 644 $(CURDIR)/icons/48x48/atom.png $(CURDIR)/debian/atom/usr/share/icons/hicolor/48x48/apps/atom.png
+	install -Dm 644 $(CURDIR)/icons/128x128/atom.png $(CURDIR)/debian/atom/usr/share/icons/hicolor/128x128/apps/atom.png
+	install -Dm 644 $(CURDIR)/icons/256x256/atom.png $(CURDIR)/debian/atom/usr/share/icons/hicolor/256x256/apps/atom.png
+	install -Dm 644 $(CURDIR)/atom.desktop $(CURDIR)/debian/atom/usr/share/applications/atom.desktop
+	install -Dm 755 $(CURDIR)/atom $(CURDIR)/debian/atom/usr/bin/atom
+ifeq ($(DEB_HOST_ARCH),amd64)
+	install -Dm 755 $(CURDIR)/atom-linux64-0.104.0~git20140612.tar.xz \
+		$(CURDIR)/debian/atom/opt/atom/atom-linux64-0.104.0~git20140612.tar.xz
+else
+	install -Dm 755 $(CURDIR)/atom-linux32-0.104.0~git20140612.tar.xz \
+		$(CURDIR)/debian/atom/opt/atom/atom-linux32-0.104.0~git20140612.tar.xz
+endif
+
+# Build architecture-independent files here.
+binary-indep: build install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_icons
+	dh_installmenu
+	dh_installmime
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install 
+
+
