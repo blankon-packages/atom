@@ -1,8 +1,7 @@
 Source: atom
 Section: devel
 Priority: optional
-Maintainer: BlankOn Developers <BlankOn-Dev@googlegroups.com>
-XSBC-Original-Maintainer: Alin Andrei <webupd8@gmail.com>
+Maintainer: Alin Andrei <webupd8@gmail.com>
 Build-Depends: debhelper
 Standards-Version: 3.9.5
 Homepage: http://www.atom.io

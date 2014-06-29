@@ -1,9 +1,30 @@
-atom (0.104.0~git20140612-blankon1) tambora; urgency=low
+atom (0.106.0~git20140620-blankon1) tambora; urgency=low
 
   * Import from ppa webupd8
-  * Initial upload for BlankOn Tambora
 
- -- Mahyuddin <yudi.al@gmail.com>  Thu, 12 Jun 2014 22:14:03 +0700
+ -- Mahyuddin <yudi.al@gmail.com>  Sun, 29 Jun 2014 07:02:10 +0700
+
+atom (0.106.0~git20140620~webupd8~saucy0) saucy; urgency=medium
+
+  * New snapshot
+  * re-apply: 
+    - fix icon (scaled resources/app/resources/atom.png to 128px) 
+       too large in some cases (like KDE with no effects in alt-tab)
+    - fix issue with symlinks (delete them from the package and 
+       create them via postinst):
+        - /opt/atom/resources/app/spec/fixtures/symlink-to-dir
+        - /opt/atom/resources/app/spec/fixtures/symlink-to-file
+    - disable metrics by default:
+        - added 'metrics': false to atom/resources/app/dot-atom/config.cson
+
+ -- Alin Andrei <webupd8@gmail.com>  Mon, 23 Jun 2014 16:12:33 +0200
+
+atom (0.104.0~git20140612~webupd8~saucy2) saucy; urgency=medium
+
+  * disable metrics by default:
+    - added 'metrics': false to atom/resources/app/dot-atom/config.cson
+
+ -- Alin Andrei <webupd8@gmail.com>  Thu, 12 Jun 2014 21:07:24 +0200
 
 atom (0.104.0~git20140612~webupd8~saucy1) saucy; urgency=medium
 
