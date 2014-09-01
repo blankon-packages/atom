@@ -1,20 +1,18 @@
 Source: atom
 Section: devel
 Priority: optional
-Maintainer: Alin Andrei <webupd8@gmail.com>
+Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
+XSBC-Original-Maintainer: Alin Andrei <webupd8@gmail.com>
 Build-Depends: debhelper
 Standards-Version: 3.9.5
 Homepage: http://www.atom.io
 
 Package: atom
 Architecture: any
-Depends: ${misc:Depends}, gconf2, gconf-service, libgtk2.0-0, libudev0 | libudev1, libgcrypt11, libgnome-keyring0, gir1.2-gnomekeyring-1.0, libnotify4, libxtst6, libnss3, python
+Depends: ${misc:Depends}, gconf2, gconf-service, libgtk2.0-0, libudev0 | libudev1, libgcrypt11, libgnome-keyring0, gir1.2-gnomekeyring-1.0, libnotify4, libxtst6, libnss3, python, gvfs-bin, xdg-utils
 Suggests: nodejs (>= 0.10.26), git
 Description: Atom text editor from GitHub
  Atom is a hackable text editor for the 21st century, developed by GitHub.
- .
  Atom is open source and built on top of atom-shell.
- .
  Atom is designed to be customizable, but also usable without needing to edit a config file.
- .
  Atom is modern, approachable, and hackable to the core.

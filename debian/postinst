@@ -24,12 +24,12 @@ case "$1" in
     #fi
     # Work-around Menu item not being created on first installation
     # Simlinks which cause issues with the package, recreate them here
-    if [ ! -e /opt/atom/resources/app/spec/fixtures/symlink-to-dir ]; then
-        ln -s /opt/atom/resources/app/spec/fixtures/dir /opt/atom/resources/app/spec/fixtures/symlink-to-dir
-    fi
-    if [ ! -e /opt/atom/resources/app/spec/fixtures/symlink-to-file ]; then
-        ln -s /opt/atom/resources/app/spec/fixtures/sample.js /opt/atom/resources/app/spec/fixtures/symlink-to-file
-    fi
+    #if [ ! -e /opt/atom/resources/app/spec/fixtures/symlink-to-dir ]; then
+    #    ln -s /opt/atom/resources/app/spec/fixtures/dir /opt/atom/resources/app/spec/fixtures/symlink-to-dir
+    #fi
+    #if [ ! -e /opt/atom/resources/app/spec/fixtures/symlink-to-file ]; then
+    #    ln -s /opt/atom/resources/app/spec/fixtures/sample.js /opt/atom/resources/app/spec/fixtures/symlink-to-file
+    #fi
     # Fix desktop file not showing up after first installation
     if [ -x /usr/bin/desktop-file-install ]; then
         desktop-file-install /usr/share/applications/atom.desktop > /dev/null 2>&1
